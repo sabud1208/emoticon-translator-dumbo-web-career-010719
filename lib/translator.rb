@@ -2,8 +2,8 @@
 require 'yaml'
 require 'pry'
 
-def load_library(path)
-  emoticons = YAML.load_file(path)
+def load_library(library)
+  emoticons = YAML.load_file(library)
   emoticon_hash = Hash.new
 
   emoticon_hash["get_emoticon"] = Hash.new
@@ -16,8 +16,8 @@ def load_library(path)
   emoticon_hash
 end
 
-def get_japanese_emoticon(path, emoticon)
-  emoticon_hash = load_library(path)
+def get_japanese_emoticon(library, emoticon)
+  emoticon_hash = load_library(library)
   result = emoticon_hash["get_emoticon"][emoticon]
   if result == nil
     result = "Sorry, that emoticon was not found"
@@ -25,8 +25,8 @@ def get_japanese_emoticon(path, emoticon)
   result
 end
 
-def get_english_meaning(path, emoticon)
-  emoticon_hash = load_library(path)
+def get_english_meaning(library, emoticon)
+  emoticon_hash = load_library(library)
   result = emoticon_hash["get_meaning"][emoticon]
   if result == nil
     result = "Sorry, that emoticon was not found"
